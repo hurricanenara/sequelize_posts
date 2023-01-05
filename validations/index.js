@@ -8,6 +8,20 @@ const signupValidation = Joi.object({
   }),
 });
 
+const postCreateValidation = Joi.object({
+  title: Joi.string().not('').required(),
+  content: Joi.string().not('').required(),
+  userId: Joi.number().required(),
+});
+
+const postUpdateValidation = Joi.object({
+  title: Joi.string().optional().not(''),
+  content: Joi.string().optional().not(''),
+  userId: Joi.forbidden(),
+});
+
 module.exports = {
   signupValidation,
+  postCreateValidation,
+  postUpdateValidation,
 };
