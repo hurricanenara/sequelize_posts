@@ -1,4 +1,4 @@
-GET http://localhost:3000/users
+GET http://localhost:3000/posts/test
 
 ###
 
@@ -6,7 +6,11 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts/2
+GET http://localhost:3000/posts/3
+
+###
+
+GET http://localhost:3000/comments/3
 
 ###
 
@@ -14,21 +18,49 @@ POST http://localhost:3000/signup
 Content-Type: application/json
 
 {
-    "nickname": "banana",
+    "nickname": "pear",
     "password": "password1234",
     "confirm": "password1234"
 }
 
 ###
 
-POST http://localhost:3000/posts
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "title": "banana milk",
-    "content": "is great",
-    "userId": 1
+    "nickname": "pear",
+    "password": "password1234"
 }
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6ImFwcGxlIiwiaWF0IjoxNjczMTkxMTY3fQ.ttir7edF_ur_OjXPIQTkAFq_MmyeyjCPstuWNS21dTM
+
+{
+    "title": "saturday",
+    "content": "is great"
+}
+
+###
+
+POST http://localhost:3000/comments/3
+Content-Type: application/json
+
+{
+    "content": "java",
+    "userId": "1"
+}
+
+###
+
+###
+
+POST http://localhost:3000/posts/5/like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InBlYXIiLCJpYXQiOjE2NzMxOTE2NjF9.bs55K4_uLCruAahuQROomgb7p0NRNvO_IyqbFX39dKY
 
 ###
 
@@ -42,4 +74,17 @@ Content-Type: application/json
 
 ###
 
+PATCH http://localhost:3000/comments/2
+Content-Type: application/json
+
+{
+    "content": "ruby"
+}
+
+###
+
 DELETE  http://localhost:3000/posts/2
+
+###
+
+DELETE  http://localhost:3000/comments/4
